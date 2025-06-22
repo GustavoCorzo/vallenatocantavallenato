@@ -1,0 +1,52 @@
+{% extends 'cantovallenato/canciones/basecanto.html' %}
+{% block title %}
+Listado de canciones vallenatas grabadas
+{% endblock title %}
+{% block main %}
+
+
+<div class="container mx-auto px-4 md:flex items-center gap-6 bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 shadow rounded">
+
+        <h3 class="text-2xl text-center font-bold mb-4">Listado de versiones de canciones vallenatas grabadas</h3>
+        <p>Seleccione una canción y pulse filtrar canto original para mirar un listado de sus diferentes versiones</p>
+        <form  method="get">
+            {{ form.as_p}}
+            <br>
+            <button type="" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">Mostrar versiones</button>
+        </form>
+        <br>
+        <table class="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-300 px-4 py-2">Album</th>
+                    <th class="border border-gray-300 px-4 py-2">Interprete</th>
+                    <th class="border border-gray-300 px-4 py-2">Año</th>
+                    <th class="border border-gray-300 px-4 py-2" colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for version in versiones %}
+                   
+                
+                <tr>
+                    <td>{{version.album.titulo}}</td>
+                    <td>{{version.interprete}}</td>
+                    <td>{{version.album.anio_graba}}</td>
+                    <td class="border border-gray-300 px-4 py-2"><a href="{% url 'versionvallenato_edit' version.pk %}" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Editar</a></td>
+                    <td class="border border-gray-300 px-4 py-2"><a href="{% url 'versionvallenato_delete' version.pk %}" class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Eliminar</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="border border-gray-300 px-4 py-2 text-center">No hay versiones registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+        <p><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Regresar</a></p>
+</div>
+{% endblock main %}
+    

@@ -1,0 +1,12 @@
+{% extends "cantovallenato/canciones/basecanto.html" %}
+{% block title %}Rol no asignado{% endblock %}
+
+{% block main %}
+<div class="max-w-md mx-auto mt-10 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-900 p-6 rounded">
+  <h2 class="text-xl font-semibold mb-2">¡Ups! Ningún rol fue asignado</h2>
+  <p class="mb-4">La persona fue registrada, pero no se seleccionó ningún rol. Puedes editarla más tarde para asignarle uno.</p>
+  <a href="{% url 'personas_por_rol' rol='compositor' %}" class="inline-block bg-yellow-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+    Crear otra persona
+  </a>
+</div>
+{% endblock %}

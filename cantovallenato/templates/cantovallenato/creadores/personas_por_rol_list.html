@@ -1,0 +1,33 @@
+{% extends 'cantovallenato/canciones/basecanto.html' %}
+{% block title %}
+Personas por rol
+{% endblock title %}
+{% block main %}
+<h2 class="text-xl font-bold mb-4">Listado de {{ rol|capfirst }}s de vallenatos</h2>
+
+<div class="bg-gray-100 p-8">
+    <table class="table-auto w-full border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2">Nombre artístico</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personas %} 
+
+            <tr>
+                <td class="border border-gray-300 px-4 py-2"><a href="{% url 'persona_detail' pk=persona.pk %}"> {{persona.nombre_artistico}}</a></td>                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="border border-gray-300 px-4 py-2 text-center">No hay personas registradas.</td>
+            </tr>         
+            {% endfor %}                    
+        </tbody>
+    </table>
+    <br>
+    <p><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Regresar</a></p>    
+</div>   
+
+{% endblock main %}        
+

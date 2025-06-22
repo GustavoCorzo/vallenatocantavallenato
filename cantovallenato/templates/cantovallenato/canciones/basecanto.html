@@ -1,0 +1,210 @@
+{% load crispy_forms_tags %}
+{% load tailwind_filters %}
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>            
+            {% block title %} {% endblock title %}| Vallenato canta Vallenato                
+        </title>
+        {% compress css %}
+        <link rel="stylesheet" href="{% static 'src/output.css' %}">
+        {% endcompress %}
+    </head>
+<body class="bg-blue-100">
+    <header>
+        <div class="bg-blue-200 p-4 shadow-lg">            
+            <h1 class="mx-auto text-3xl font-bold text-center text-blue-600">Vallenato canta Vallenato</h1>
+        </div>
+        <!-- place navbar here -->
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <div        class="container mx-auto px-4 md:flex items-center gap-6">
+                <!--  Logo -->
+                <div 
+                    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a 
+                    href="{% url 'home' %}" class="flex text-white bg-blue-500 px-3 py-1 rounded-lg items-center space-x-3 rtl:space-x-reverse"><span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><Meta:compat>Mi valle</Meta:compat></span>
+                    </a>
+                    <!-- Icono de menú móvil -->
+                     <div class="md:hidden flex items-center">
+                        <button
+                            data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
+                                <span class="sr-only">Abrir menú principal</span>
+                                <svg 
+                                    class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"           fill="none" viewBox="0 0 17 14">
+                                    <path 
+                                        stroke="currentColor" stroke-linecap="round"            stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                                </svg>
+                        </button>
+                    </div>
+                    <!-- Menú de navegación -->
+                    <div
+                        class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+                        <ul 
+                            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"> 
+                            
+                            <!-- Los cantos -->
+                            <li>
+                                <button 
+                                    id="dropdownCantosBtn" data-dropdown-toggle="dropdownCantos" 
+                                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                    Los cantos
+                                    <svg 
+                                    class="w-2.5 h-2.5 ms-2.5" 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" 
+                                    viewBox="0 0 10 6">
+                                    <path 
+                                        stroke="currentColor" 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round" 
+                                        stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                </button>
+                                <!-- Dropdown menu -->
+                                 <div 
+                                    id="dropdownCantos" 
+                                    class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul 
+                                        class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+                                        <li><a href="{% url 'cantovallenato_create' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nueva canción</a></li>
+                                        <li><a href="{% url 'cantovallenato_list' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Canciones creadas</a></li>
+                                        <li aria-labelledby="dropdownCantosLink">
+                                            <button 
+                                                id="dropdownVersionesBtn" data-dropdown-toggle="dropdownVersiones" 
+                                                data-dropdown-placement="right-start" 
+                                                type="button" 
+                                                class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                                Versiones
+                                                    <svg 
+                                                    class="w-2.5 h-2.5 ms-2.5" 
+                                                    aria-hidden="true" 
+                                                    xmlns="http://www.w3.org/2000/svg" 
+                                                    fill="none" 
+                                                    viewBox="0 0 10 6">
+                                                    <path 
+                                                        stroke="currentColor" 
+                                                        stroke-linecap="round" 
+                                                        stroke-linejoin="round" 
+                                                        stroke-width="2" d="m1 1 4 4 4-4"/>
+                                                    </svg>
+                                            </button>
+                                            <div id="dropdownVersiones" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+                                                <ul 
+                                                    class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownVersionesBtn">
+                                                    <li><a href="{% url 'versionvallenato_create' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Nueva versión</a></li>
+                                                    <li><a href="{% url 'versionesvallenato_list' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Composiciones grabadas</a></li>
+                                                </ul>
+
+                                            </div>
+
+                                        </li>
+
+                                    </ul>
+                                 </div>
+                            </li>
+                            <!-- Los creadores -->
+                            <li>
+                                <button 
+                                    id="dropdownCreadoresBtn" data-dropdown-toggle="dropdownCreadores" 
+                                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                    Los creadores
+                                    <svg 
+                                        class="w-2.5 h-2.5 ms-2.5" 
+                                        aria-hidden="true" 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        fill="none" 
+                                        viewBox="0 0 10 6">
+                                        <path 
+                                            stroke="currentColor" 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                </button>
+                                <!-- Dropdown menu -->
+                                 <div 
+                                    id="dropdownCreadores" 
+                                    class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul 
+                                        class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+                                        <li><a href="{% url 'persona_create' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nuevo Creador</a></li>
+                                        <li><a href="{% url 'personas_por_rol' rol='compositor' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Compositores</a></li>
+                                        <li><a href="{% url 'personas_por_rol' rol='acordeonero' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Acordeoneros</a></li>
+                                        <li><a href="{% url 'personas_por_rol' rol='cantante' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cantantes</a></li>
+                                        <li><a href="{% url 'personas_por_rol' rol='cajero' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cajeros</a></li>
+                                        <li><a href="{% url 'personas_por_rol' rol='guacharaquero' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Guacharaqueros</a></li>
+                                        <li><a href="{% url 'personas_por_rol' rol='guitarrista' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Guitarristas</a></li>
+                                    </ul>
+                                 </div>
+                            </li>
+                            <!-- Los intérpretes -->
+                            <li> 
+                                <button 
+                                    id="dropdownInterpretesBtn" data-dropdown-toggle="dropdownInterpretes" 
+                                    class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                    Los interpretes
+                                    <svg 
+                                        class="w-2.5 h-2.5 ms-2.5" 
+                                        aria-hidden="true" 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        fill="none" 
+                                        viewBox="0 0 10 6">
+                                        <path 
+                                            stroke="currentColor" 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                </button>
+                                <!-- Dropdown menu -->
+                                 <div 
+                                    id="dropdownInterpretes" 
+                                    class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul 
+                                        class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+                                        <li><a href="{% url 'agrupacionvallenato_create' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nueva agrupación</a></li>
+                                        <li><a href="{% url 'agrupacionesvallenato_list' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Agrupaciones del vallenato</a></li>
+                                        <li><a href="{% url 'albumvallenato_create' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nuevo album</a></li>
+                                        <li><a href="{% url 'albumesvallenato_list' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Albumes de vallenatos</a></li>
+                                    </ul>
+                                 </div>
+                            </li>
+                        </ul>
+                    </div>                               
+            </div>
+            </div>
+         </nav>
+         <hr>
+    </header>
+    <main>
+        
+        {% block main %}
+            
+        {% endblock main %}
+            
+    </main>
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+        <div class="bg-gray-800 p-4">
+            <div class="container mx-auto text-center">
+                <p class="text-white">Vallenato canta Vallenato - Todos los derechos reservados &copy; 2025</p>
+                <p class="text-white">Desarrollado por: GUSTAVO RODOLFO CORZO OCHOA</p>
+            </div>
+        </div>    
+    </footer>
+    
+    {% comment %}
+    <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>        
+    {% endcomment %}
+    <script src="/static/src/js/flowbite.min.js"></script>
+        
+</body>
+
+</html>

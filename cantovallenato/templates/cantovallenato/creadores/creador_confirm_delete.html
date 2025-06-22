@@ -1,0 +1,19 @@
+{% extends 'cantovallenato/canciones/basecanto.html' %}
+
+{% block title %}
+Eliminar Creador
+{% endblock title %}
+
+{% block main %}
+<h2 class="text-xl text-center font-semibold mb-4">Eliminar Creador de Vallenato</h2>
+<form  method="POST">
+    {% csrf_token %}    
+    <p>¿Estás seguro de que deseas eliminar a "{{ object.nombre_artistico }}"?</p>
+    <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" value="Si, eliminar">
+    <p>Esta acción eliminará permanentemente al creador de Vallenato y no podrá deshacerse.</p>
+    <br>    
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'persona_detail' object.id %}">Cancelar</a>
+</form>
+<br>
+<p><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Regresar</a></p> 
+{% endblock main %}

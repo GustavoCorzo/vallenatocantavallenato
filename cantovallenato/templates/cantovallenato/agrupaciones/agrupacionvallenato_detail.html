@@ -1,0 +1,53 @@
+{% extends 'cantovallenato/canciones/basecanto.html' %}
+{% load static %}
+
+{% block title %}
+ Detalles de {{ agrupacion.razon_social}}
+{% endblock title %}
+{% block main %}
+<div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="flex justify-center px-4 pt-4">
+        <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+            <span class="sr-only">Open dropdown</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+            </svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+            <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                    <a href="{% url 'agrupacionvallenato_edit' agrupacion.pk %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Editar</a>
+                </li>                
+                <li>
+                    <a href="{% url 'agrupacionvallenato_delete' agrupacion.pk %}"  class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Eliminar</a>
+                </li>
+            </ul>
+        </div>
+    </div> 
+    <div class="sm:flex sm:items-center px-6 py-4">
+        {% if agrupacion.imagen %}        
+            <img class="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full" src="{{agrupacion.imagen.url}}" alt="Imagen de {{ agrupacion.razon_social }}">
+        {% else %}
+        <p>No hay imagen disponible para esta agrupación.</p>
+        {% endif %}
+            <div class="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">
+                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><strong><i>{{ agrupacion.razon_social }}</i></strong></h5>
+                <h4 class="mb-1 text-lg font-medium text-gray-900 dark:text-white"><strong>Acordeonero: </strong><i>{{agrupacion.acordeonero}}</i></h4>
+                <h4 class="card-subtitle mb-2 text-body-secondary"><strong>Voz Principal: </strong><i>{{agrupacion.voz_principal}}</i></h4>
+                <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Primer coro: </strong><i>{{agrupacion.corista_uno}}</i></h5>
+                <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Segundo coro: </strong><i>      {{ agrupacion.corista_dos }}</i></h5>
+                <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Cajero: </strong><i>{{agrupacion.cajero}}</i></h5>
+                <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Guacharaquero: </strong><i>{{agrupacion.guacharaquro}}</i></h5>
+                <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Guitarrista: </strong><i>{{agrupacion.guitarrista}}</i></h5>
+                <div class="mt-4">
+                    <p><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Regresar</a></p>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+
+
+{% endblock main %}        

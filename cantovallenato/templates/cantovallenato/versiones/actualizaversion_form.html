@@ -1,0 +1,15 @@
+{% extends 'cantovallenato/versiones/baseversion.html' %}
+
+{% block title %}
+    Editar version Vallenato
+{% endblock title %}
+
+{% block main %}
+<h3>Editar version vallenata</h3>
+<form  method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Editar canto</button>
+</form>
+<a href="{% url 'versionvallenato_list' %}">Cancelar</a>  
+{% endblock main %}

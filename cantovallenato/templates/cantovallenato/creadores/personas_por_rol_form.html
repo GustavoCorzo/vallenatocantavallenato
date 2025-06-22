@@ -1,0 +1,98 @@
+{% extends "cantovallenato/canciones/basecanto.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+Nuevo creador de Vallenato
+{% endblock %}|Vallenato canta vallenato
+
+{% block sidebar %}
+{% endblock sidebar %}
+
+{% block main %}
+<div class="container px-4 max-w-lg mx-auto bg-white p-6 rounded-md shadow-md">
+    <h2 class="text-xl text-center font-semibold mb-4">Nuevo creador de música vallenata</h2>
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+        <!-- Nombres-->
+        <div>
+            <label for="{{ form.nombres.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+              Nombres
+            </label>
+            {{ form.nombres|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+          </div>
+        <!-- Apellidos-->
+        <div>
+            <label for="{{ form.apellidos.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+              Apellidos
+            </label>
+            {{ form.apellidos|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+        </div>
+        <!-- Formación académica -->
+        <div>
+          <label for="{{ form.formacion_academica.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+          Formación académica
+          </label>
+          {{ form.formacion_academica|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+        </div>
+        <!-- Nombre artístico -->
+        <div>
+            <label for="{{ form.nombre_artistico.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+              Nombre artístico
+            </label>
+            {{ form.nombre_artistico|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+        </div>          
+        <!-- Año nacimiento-->
+        <div>
+          <label for="{{ form.anio_nace.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+          Año nacimiento
+          </label>
+          {{ form.anio_nace|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+        </div>
+        <!-- Lugar nacimiento-->
+        <div>
+          <label for="{{ form.lugar_nace.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+          Lugar nacimiento
+          </label>
+          {{ form.lugar_nace|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+        </div>
+        <!-- Lugar deceso-->
+        <div>
+          <label for="{{ form.lugar_muere.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+          Lugar deceso
+          </label>
+          {{ form.lugar_muere|add_class:"w-full px-3 py-2 border border-gray-300 rounded" }}
+        </div>
+        <!-- Imagen -->
+        <div>
+          <label for="{{ form.imagen.id_for_label }}" class="block mb-1 text-sm font-medium text-gray-700">
+          Imagen
+          </label>
+          {{ form.imagen|add_class:"block w-full text-sm text-gray-900 border border-gray-300 rounded cursor-pointer bg-gray-50" }}
+        </div>
+        <!-- Roles -->
+        <div class="mb-4">
+          <label class="block mb-1 text-sm font-medium text-gray-700">Roles</label>
+          {{ form.roles }}
+        </div>
+      
+        <!-- Botón de envío -->
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+        Guardar
+        </button>
+    </form>
+    {% if img_obj.image %}
+      <h3 class="text-green-600 font-semibold text-lg mt-4">Imagen cargada: {{ img_obj.title }}</h3>
+        <img src="{{ img_obj.image.url }}" alt="Imagen subida" class="max-h-72 rounded shadow-md mt-2">
+    {% endif %}
+    <div class="mt-4">
+      <a href="{% url 'personas_por_rol' rol='compositor' %}" class="inline-block text-white bg-gray-600 hover:bg-gray-800 font-semibold py-2 px-4 rounded">
+      Regresar
+      </a>
+    </div>
+</div>
+
+
+<br>
+{% endblock main %}
+{% block footer %}
+{% endblock footer%}

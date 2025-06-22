@@ -1,0 +1,225 @@
+{% load crispy_forms_tags %}
+{% load tailwind_filters %}
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+</head>
+<body>
+    <header>
+        <div class="bg-orange-600 p-4">
+            <h1 class="container mx-auto text-3xl font-bold text-center text-white">Vallenato canta vallenato</h1>            
+        </div>
+        <div class="p-1 flex flex-wrap items-center justify-center">
+            <a href="#">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/laNevada.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">El eclipse</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Cuando tu seas mía</span>
+                </div>        
+                </div>
+            </a>
+            <a href="#">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/ecce Homo.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">Logo</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Tu valle</span>
+                </div>        
+                </div>
+            </a>
+            <a href="#">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/MargoCabellera.jpg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">Casita de bahareque</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Viejo valledupar</span>
+                </div>        
+                </div>
+            </a>
+        </div>        
+    </header>
+    <main>
+        <div class="p-1 flex flex-wrap items-center justify-center">
+            <a href="{% url 'territorio' %}">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/laNevada.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">El territorio del vallenato</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">La tierra que pare vallenatos a tutiplen</span>
+                </div>        
+                </div>
+            </a>
+            <a href="{% url 'cultura' %}">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/ecce Homo.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">La cultura del vallenato</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Tu cultura globalizada por tu música</span>
+                </div>        
+                </div>
+            </a>
+            <a href="{% url 'cantarvallenato' %}">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/MargoCabellera.jpg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">Los cantos del vallenato</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Las más lindas melodías que un ser humano puede escuchar</span>
+                </div>        
+                </div>
+            </a>
+            <a href="#">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/conjunto.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">Agrupaciones interpretes del vallenato</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Genios que al operar algunos instrumentos musicales le ponen alas a los pensamientos del hombre caribeño</span>
+                </div>        
+                </div>
+            </a>
+            <a href="{% url 'festivales' %}">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/alejoPrimerRey.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">Los festivales del vallenato</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Espacios espirituales para liberar el alma</span>
+                </div>        
+                </div>
+            </a>
+            <a href="{% url 'promotores' %}">
+                <div class="w-80 h-[400px] m-6 relative overflow-hidden bg-blue-500 rounded-lg shadow-lg">
+                <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none"
+                     style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white" />
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white" />
+                </svg>
+                <div class="relative pt-10 px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-9 -mb-24 ml-3" 
+                        style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;">                
+                    </div>
+                    <img src="/static/src/img/promotores.jpeg" alt="" class="relative w-40">
+                </div>
+                <div class="relative text-white px-6 pb-6 mt-6">
+                    <div class="flex justify-center">
+                        <span class="block font-semibold text-xl">Promotores del vallenato</span>
+                    </div>
+                    <span class="block opacity-75 -mb-1">Admirable grupo de personas que pusieron su fe inquebrantable en la conversión de un canto corroncho en un mensaje universal</span>
+                </div>        
+                </div>
+            </a>
+        </div>
+    </main>
+    {% comment %}
+    <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>        
+    {% endcomment %}
+    <script src="/static/src/js/flowbite.min.js"></script> 
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,26 @@
+{% extends 'cantovallenato/canciones/basecanto.html' %}
+{% load crispy_forms_tags %}
+{% load tailwind_filters %}
+    
+
+{% block title %}
+    Editar creador Vallenato
+{% endblock title %}
+
+{% block main %}
+<br>
+<h2 class="text-xl text-center font-semibold mb-4">Editar información de un creador</h2>
+<form  method="POST">
+    {% csrf_token %}
+    <div>
+        {{ form|crispy }}
+    </div>
+    <br>
+    <p><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Editar creador</a></p>
+    {% comment %}    
+    <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" value="Editar creador">
+    {% endcomment %}
+</form>
+<br>
+<p><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Cancelar</a></p>
+{% endblock main %}

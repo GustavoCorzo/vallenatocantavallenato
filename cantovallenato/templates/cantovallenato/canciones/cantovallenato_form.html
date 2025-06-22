@@ -1,0 +1,30 @@
+{% extends "cantovallenato/canciones/basecanto.html" %}
+{% load crispy_forms_tags %}
+{% load tailwind_filters %}
+{% block title %}
+Crear canto Vallenato
+{% endblock %}|Vallenato canta vallenato
+
+{% load static %}
+
+{% block main %}
+
+    <div class="container max-w-lg mx-auto bg-white p-6 shadow rounded">
+        <h2 class="text-xl text-center font-semibold p-4">Crear canto vallenato</h2>
+        <form  method="post" enctype="multipart/form-data" class="space-y-4" >
+            {% csrf_token %}
+            <div>
+                {{ form|crispy }}
+            </div>
+            <br>
+            <input type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" value="Guardar">
+        </form>
+        <br>
+        <p><a class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg" href="{% url 'cantarvallenato' %}">Regresar</a></p>
+        
+    </div>
+<br>
+{% endblock main %}
+{% block footer %}
+
+{% endblock footer%}
