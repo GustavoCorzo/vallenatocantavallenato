@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: tu-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn mivalle_main.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: mivalle_main.settings

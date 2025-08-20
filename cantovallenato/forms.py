@@ -53,15 +53,15 @@ class AgrupacionMusicalForm(forms.ModelForm):
         fields = ['razon_social', 'acordeonero', 'voz_principal', 'corista_uno', 'corista_dos', 'cajero', 'guacharaquero', 'guitarrista']
 
 class AlbumVallenatoForm(forms.ModelForm):
-    cancion = forms.ModelChoiceField( queryset=CantoVallenato.objects.all(), required=True, label='Canción', widget=forms.Select(attrs={'class': 'form-control'}) )
+    #cancion = forms.ModelChoiceField( queryset=CantoVallenato.objects.all(), required=True, label='Canción', widget=forms.Select(attrs={'class': 'form-control'}) )
 
     class Meta:
         model = AlbumVallenato
-        fields = ['cancion','titulo', 'agrupacion', 'anio_graba', 'isbn']
+        fields = ['titulo', 'agrupacion', 'anio_graba', 'isbn']
         
-    def __init__(self, *args, **kwargs):
-        super().__init__ (*args, **kwargs)
-        self.fields['cancion'].label_from_instance = lambda obj: obj.titulo
+    #def __init__(self, *args, **kwargs):
+        #super().__init__ (*args, **kwargs)
+        #self.fields['cancion'].label_from_instance = lambda obj: obj.titulo
 
 class VersionVallenatoForm(forms.ModelForm):
     cancion = forms.ModelChoiceField( queryset=CantoVallenato.objects.all(), required=True, label='Canción', widget=forms.Select(attrs={'class': 'form-control'}) )

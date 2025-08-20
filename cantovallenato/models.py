@@ -116,7 +116,7 @@ class AlbumVallenato(models.Model):
     cancion = models.ForeignKey('CantoVallenato', on_delete=models.SET_NULL, null=True)
     titulo = models.CharField(max_length=100)
     agrupacion = models.ForeignKey('AgrupacionMusical', on_delete=models.SET_NULL, null=True)
-    anio_graba = models.CharField(null=True, blank=True)
+    anio_graba = models.CharField(max_length=4, null=True, blank=True)
     isbn = models.CharField('ISBN', max_length=13, unique=True, null=True, blank=True)
 
     class Meta: ordering = ["anio_graba"]

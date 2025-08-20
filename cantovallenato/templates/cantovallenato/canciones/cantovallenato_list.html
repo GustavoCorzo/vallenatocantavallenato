@@ -35,7 +35,7 @@ Listado de cantos vallenatos
                 <td class="border border-gray-300 px-4 py-2">{{canto.titulo}}</td>                               
                 <td class="border border-gray-300 px-4 py-2">{{canto.ritmo}}</td>
                 <td class="border border-gray-300 px-4 py-2"><a href="{% url 'cantovallenato_edit' canto.pk %}" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Editar</a></td>
-                <td class="border border-gray-300 px-4 py-2"><a href="{% url 'cantovallenato_delete' canto.pk %}" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Eliminar</a></td>
+                <td class="border border-gray-300 px-4 py-2"><a href="{% url 'cantovallenato_delete' canto.pk %}" class="bg-red-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Eliminar</a></td>
             </tr>
             {% empty %}
             <tr>

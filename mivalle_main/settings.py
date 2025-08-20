@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+import os
+from dotenv import load_dotenv
+import dj_database_url
+
+load_dotenv()  # Carga las variables de entorno desde el archivo .env
 
 from pathlib import Path
 
@@ -23,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-%tvh+d^ji($*tr2ule*buu-x-&&nfgp=wz7t(1)j!u69v6ts2g"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tu-app.onrender.com']
 
 
 # Application definition
@@ -41,15 +46,21 @@ INSTALLED_APPS = [
     "cantovallenato.apps.CantovallenatoConfig",
     "culturadelvallenato.apps.CulturadelvallenatoConfig",
     "festivalesdelvallenato.apps.FestivalesdelvallenatoConfig",
-     "promotoresdelvallenato.apps.PromotoresdelvallenatoConfig",
-     "territoriodelvallenato.apps.TerritoriodelvallenatoConfig",
-     "crispy_forms",
-     "crispy_tailwind",
-     "widget_tweaks",
+    "promotoresdelvallenato.apps.PromotoresdelvallenatoConfig",
+    "territoriodelvallenato.apps.TerritoriodelvallenatoConfig",
+    "crispy_forms",
+    "crispy_tailwind",
+    "widget_tweaks",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -59,6 +70,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = "mivalle_main.urls"
@@ -84,17 +97,23 @@ WSGI_APPLICATION = "mivalle_main.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "cantamivalleDB",
-        "USER": "postgres", 
-        "PASSWORD": "19TavoCorzo50",
-        "HOST": "127.0.0.1",
-        "PORT": "5432"
-    }
-}
 
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600
+    )
+    #{
+        #"ENGINE": "django.db.backends.postgresql_psycopg2",
+        #"NAME": "cantamivalleDB",
+        #"USER": "postgres",
+        #"PASSWORD" : "19TavoCorzo50",
+        #"HOST" : "127.0.0.1",
+        #"PORT" : "5432",
+
+    #}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -130,16 +149,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 COMPRESS_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'  # o usa os.path.join(BASE_DIR, 'media') si estás en una versión sin Pathlib
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

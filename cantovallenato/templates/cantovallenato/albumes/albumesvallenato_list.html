@@ -12,8 +12,14 @@ Listado de albumes de canciones vallenatas
             <table class="table-auto w-full border-collapse border border-gray-300">
                 <thead>
                     <tr class="bg-gray-200">
-                        <th class="border border-gray-300 px-4 py-2">Canción</th>
+                        
+                        {% comment %}
+                        <th class="border border-gray-300 px-4 py-2">Album</th>                            
+                        {% endcomment %}
+                            
                         <th class="border border-gray-300 px-4 py-2">Título del album</th>
+                        <tr class="bg-gray-200">
+                    <th class="border border-gray-300 px-4 py-2">Agrupación</th>
                         <th class="border border-gray-300 px-4 py-2">Año</th>
                         <th class="border border-gray-300 px-4 py-2" colspan="2">Acciones</th>
                     </tr>
@@ -21,12 +27,14 @@ Listado de albumes de canciones vallenatas
                 <tbody>
                     
                     {% for album in albumes %}
-                        <tr class="bg-gray-200">
-                            <td class="border border-gray-300 px-4 py-2">{{album.cancion.titulo}}</td>
+                        <tr class="bg-gray-200">                  
+                            
+                                
                             <td class="border border-gray-300 px-4 py-2">{{album.titulo}}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{agrupacion.razon_social}}</td>
                             <td class="border border-gray-300 px-4 py-2">{{album.anio_graba}}</td>
                             <td class="border border-gray-300 px-4 py-2"><a href="{% url 'albumvallenato_edit' album.pk %}" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Editar</a></td>
-                            <td class="border border-gray-300 px-4 py-2"><a href="{% url 'albumvallenato_delete' album.pk %}" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Eliminar</a></td>
+                            <td class="border border-gray-300 px-4 py-2"><a href="{% url 'albumvallenato_delete' album.pk %}" class="bg-red-500 hover:red-800 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Eliminar</a></td>
                         </tr>
                         {% empty %}
                         <tr>
@@ -36,6 +44,7 @@ Listado de albumes de canciones vallenatas
                         
                 </tbody>
             </table>
+            <p class="mt-4"><a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" href="{% url 'cantarvallenato' %}">Regresar</a></p>   
         </div>
     </div>
 {% endblock main %}
