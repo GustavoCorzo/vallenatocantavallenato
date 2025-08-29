@@ -1,4 +1,5 @@
 from django.db.models.query import QuerySet
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -73,10 +74,11 @@ class PersonaCreateView(CreateView):
         else:
             # En caso de que no se haya asignado ningún rol, redirige a una página general o muestra mensaje
             return reverse_lazy('sin_rol_asignado') # Asegúrate de tener esta ruta o ajusta según tu estructura
+
 class PersonaPorRolListView(ListView):
     model = Persona
     template_name = 'cantovallenato/creadores/personas_por_rol_list.html'
-    context_object_name = 'personas' 
+    context_object_name = 'personas'    
 
     def get_queryset(self):
         queryset = super().get_queryset()

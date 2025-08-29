@@ -59,7 +59,7 @@ class Persona(models.Model):
     roles = models.ManyToManyField(Role, blank=True)
    
     class Meta:
-        ordering = ["nombre_artistico"]
+        ordering = ["apellidos"]
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
